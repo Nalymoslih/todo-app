@@ -7,7 +7,7 @@
  * @format
  */
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 // import asyncStorage from '@react-native-async-storage/async-storage';
 import {
   SafeAreaView,
@@ -22,6 +22,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import axios from 'axios';
 
 const COLORS = {primary: '1f145c', white: 'fff'};
 
@@ -31,7 +32,17 @@ const App = () => {
     {id: 1, task: 'first todo', completed: true},
     {id: 2, task: 'seocnd todo', completed: false},
   ]);
-
+  const fetch = async () => {
+    try {
+      const res = await axios.get('http://localhost:3000/api/todos');
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    fetch();
+  }, []);
   const ListItem = ({todo}) => (
     <View style={styles.ListItem}>
       <View style={{flex: 1}}>
@@ -60,7 +71,7 @@ const App = () => {
     </View>
   );
 
-  const addTodo = () => {
+  const addTodo = async () => {
     if (!textInput) {
       Alert.alert(Error, 'Please enter todo');
     } else {
@@ -69,6 +80,10 @@ const App = () => {
         task: textInput,
         completed: false,
       };
+      // await axios.get('http://localhost:3000/api/todos', newTodo);
+      await axios.post('http://localhost:3000/api/todos', newTodo);
+      // console.log(res.data);
+
       setTodos([...todos, newTodo]);
       setTextInput('');
     }
