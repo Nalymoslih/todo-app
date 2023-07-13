@@ -11,7 +11,9 @@ app.use(express.json());
 
 // Mount the todos route
 app.use('/api/todos', todosRouter);
-
+app.use('/', (req, res) => {
+  console.log('hello');
+});
 mongoose
   .connect('mongodb://127.0.0.1:27017/todoApp')
   .catch(error => console.log(error));
