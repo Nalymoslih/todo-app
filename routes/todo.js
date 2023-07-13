@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Todo = require('../schema/Todo');
+const Todo = require('/Users/macbookshop/Desktop/nali-todo-main/routes/todo.js');
 
 // Get all todos
 router.get('/', async (req, res) => {
