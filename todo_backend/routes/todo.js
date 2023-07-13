@@ -5,7 +5,8 @@ const Todo = require('../schema/Todo');
 // Get all todos
 router.get('/', async (req, res) => {
   const todos = await Todo.find();
-  res.json(todos);
+
+  res.status(200).json({data: todos});
 });
 
 // Add a new todo

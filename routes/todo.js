@@ -5,7 +5,10 @@ const Todo = require('../schema/Todo');
 // Get all todos
 router.get('/', async (req, res) => {
   const todos = await Todo.find();
-  res.json(todos);
+  console.log('here');
+  res.json({
+    data: 'aa',
+  });
 });
 
 // Add a new todo
