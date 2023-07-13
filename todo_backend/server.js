@@ -16,7 +16,6 @@ app.use(morgan('dev'));
 app.use('/api/todos', todosRouter);
 app.use('/', (req, res) => {
   res.status(200).json({
-    test: 'Server is Working',
     msg: 'General',
   });
 });
