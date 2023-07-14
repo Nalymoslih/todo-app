@@ -23,6 +23,8 @@ import {
   Platform,
 } from 'react-native';
 import axios from 'axios';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const COLORS = {primary: '1f145c', white: 'fff'};
 
@@ -36,6 +38,7 @@ const App = () => {
     try {
       const res = await axios.get('http://localhost:3000/api/todos');
       console.log(res.data);
+      setTodos(res.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -100,10 +103,15 @@ const App = () => {
     setTodos(newTodos);
   };
 
-  const deleteTodo = todoId => {
+  const deleteTodo = async todoId => {
     console.log(todoId);
-    const newTodos = todos.filter(item => item.id !== todoId);
-    setTodos(newTodos);
+    // const newTodos = todos.filter(item => item.id !== todoId);
+    // setTodos(newTodos);
+    await axios.delete('http://localhost:3000/api/todos', {
+      params: {
+        id: todoId,
+      },
+    });
   };
 
   const clearTodos = todoId => {
