@@ -95,7 +95,7 @@ const App = () => {
   const markTodoComplete = todoId => {
     // console.log(todoId);
     const newTodos = todos.map(item => {
-      if (item.id == todoId) {
+      if (item.id === todoId) {
         return {...item, completed: true};
       }
       return item;
@@ -158,7 +158,7 @@ const App = () => {
               setTextInput('');
             }}
             onKeyPress={e => {
-              if (e.nativeEvent.key == 'Enter') {
+              if (e.nativeEvent.key === 'Enter') {
                 console.log('hhhhhh');
                 addTodo();
                 setTextInput('');
