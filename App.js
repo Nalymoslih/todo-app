@@ -18,7 +18,6 @@ import {
   View,
   FlatList,
   Alert,
-  Touchable,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
