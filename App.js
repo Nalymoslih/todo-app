@@ -104,8 +104,8 @@ const App = () => {
 
   const deleteTodo = async todoId => {
     console.log(todoId);
-    // const newTodos = todos.filter(item => item.id !== todoId);
-    // setTodos(newTodos);
+    const newTodos = todos.filter(item => item.id !== todoId);
+    setTodos(newTodos);
     await axios.delete('http://localhost:3000/api/todos', {
       params: {
         id: todoId,
