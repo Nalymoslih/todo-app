@@ -24,6 +24,7 @@ import {
 import axios from 'axios';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import Config from 'react-native-config';
 
 const COLORS = {primary: '1f145c', white: 'fff'};
 
@@ -82,8 +83,10 @@ const App = () => {
         task: textInput,
         completed: false,
       };
+
+      //Not work!!
       // await axios.get('http://localhost:3000/api/todos', newTodo);
-      await axios.post('http://localhost:3000/api/todos', newTodo);
+      // await axios.post('http://localhost:3000/api/todos', newTodo);
       // console.log(res.data);
 
       setTodos([...todos, newTodo]);
